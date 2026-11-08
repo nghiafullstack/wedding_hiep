@@ -345,6 +345,18 @@ a {
   font-size: 13px;
   color: var(--muted);
 }
+.cover__hint {
+  margin: 18px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  animation: hint-pulse 2.4s ease-in-out infinite;
+}
+@keyframes hint-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
 .cover__line {
   position: absolute;
   top: 0;
@@ -1393,21 +1405,33 @@ a {
 }
 .music {
   position: fixed;
-  right: 16px;
-  bottom: 16px;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   z-index: 60;
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   border: 1px solid var(--line);
-  background: var(--paper);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: var(--ink);
   box-shadow: 0 10px 30px -12px rgba(28, 28, 26, 0.4);
+  transition: transform 0.3s var(--ease-out);
 }
-.music svg {
+.music:hover {
+  transform: scale(1.06);
+}
+.music:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.music__disc svg {
+  display: block;
   width: 20px;
   height: 20px;
   fill: none;
@@ -1416,8 +1440,73 @@ a {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.music.is-on svg {
+.music.is-on .music__disc {
   animation: spin 6s linear infinite;
+}
+/* Gợn sóng lan ra khi đang phát */
+.music.is-on::before,
+.music.is-on::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0;
+  animation: ripple 2.4s var(--ease-out) infinite;
+  pointer-events: none;
+}
+.music.is-on::after {
+  animation-delay: 1.2s;
+}
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+/* 3 vạch sóng âm nhỏ dưới đĩa */
+.music__bars {
+  position: absolute;
+  bottom: 7px;
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 7px;
+}
+.music__bars i {
+  width: 2px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+.music.is-on .music__bars i {
+  animation: eq 0.9s ease-in-out infinite alternate;
+}
+.music.is-on .music__bars i:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.music.is-on .music__bars i:nth-child(3) {
+  animation-delay: -0.6s;
+}
+@keyframes eq {
+  from {
+    height: 2px;
+  }
+  to {
+    height: 7px;
+  }
+}
+.music__slash {
+  position: absolute;
+  width: 26px;
+  height: 1.5px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  border-radius: 1px;
 }
 @keyframes spin {
   to {

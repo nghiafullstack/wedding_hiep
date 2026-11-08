@@ -115,6 +115,7 @@ export const wedding = {
   // Để trống thì form vẫn chạy, câu trả lời lưu tạm trên máy khách.
   rsvpEndpoint: '',
 
-  // Nhạc nền (tuỳ chọn): đặt file vào public/music/ rồi ghi đường dẫn, ví dụ img-style: `${BASE}music/song.mp3`
-  music: '',
+  // Nhạc nền: phát khi khách bấm "Mở thiệp". Muốn dùng bài khác: chép file .mp3
+  // vào public/music/ rồi đổi tên file ở đây. Để chuỗi rỗng '' là tắt nhạc.
+  music: `${BASE}music/nhac-nen.mp3`,
 };

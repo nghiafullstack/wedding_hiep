@@ -47,6 +47,7 @@ export default function Cover({ onOpen }) {
       ) : (
         <span className="btn btn--solid">Mở thiệp</span>
       )}
+      <p className="cover__hint">{wedding.music ? 'Chạm để mở thiệp · bật loa để nghe nhạc' : 'Chạm để mở thiệp'}</p>
     </div>
   );
 
