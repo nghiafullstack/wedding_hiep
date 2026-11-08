@@ -35,7 +35,7 @@ export const wedding = {
   dateISO: '2026-11-28T08:00:00+07:00',
   dateText: '28 · 11 · 2026',
   weekday: 'Thứ Bảy',
-  lunarText: '[Tức ngày ... tháng ... năm Bính Ngọ]',
+  lunarText: '[Tức ngày 20 tháng 10 năm Bính Ngọ]',
   rsvpDeadline: '[trước ngày ...]',
 
   invite: {
