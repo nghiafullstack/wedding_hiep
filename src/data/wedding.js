@@ -22,7 +22,7 @@ export const wedding = {
   },
   bride: {
     display: 'Hoài Thương',
-    full: 'Lê Thị Hoài Thương',
+    full: 'Hoài Thương',
     father: 'Lê Văn Bắc',
     mother: 'Nguyễn Thị Thuỷ',
     home: 'Tư gia nhà gái',
