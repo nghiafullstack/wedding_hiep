@@ -42,7 +42,9 @@ export default function InviteCard() {
               <span className="card3d__front-text">
                 <span className="card3d__eyebrow">The Wedding of</span>
                 <strong>
-                  {groom.short} &amp; {bride.short}
+                  {groom.display}
+                  <br />
+                  &amp; {bride.display}
                 </strong>
                 <span className="card3d__small">{wedding.dateText}</span>
               </span>
@@ -62,12 +64,9 @@ export default function InviteCard() {
               <span className="rule" />
               <span className="card3d__p">Tiệc cưới được tổ chức vào lúc</span>
               <span className="card3d__time">{invite.partyTime}</span>
-              <span className="card3d__p">
-                {wedding.weekday}, {wedding.dateText}
-              </span>
+              <span className="card3d__p">{invite.partyDate}</span>
               <span className="rule" />
               <span className="card3d__venue">{invite.venue}</span>
-              <span className="card3d__addr">{invite.venueAddress}</span>
               <span className="card3d__glare" />
             </span>
 

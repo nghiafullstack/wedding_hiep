@@ -16,7 +16,7 @@ export default function Closing() {
           <em>trong ngày vui.</em>
         </p>
         <p className="closing__sign">
-          {wedding.groom.short} &amp; {wedding.bride.short} · {wedding.dateText}
+          {wedding.groom.display} &amp; {wedding.bride.display} · {wedding.dateText}
         </p>
       </div>
     </footer>

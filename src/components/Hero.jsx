@@ -7,6 +7,10 @@ import { useTilt, useScrollProgress } from '../hooks/motion';
  *  - Nghiêng theo chuột (desktop) hoặc con quay (điện thoại)
  *  - Khi cuộn xuống, 3 lớp ảnh tách xa nhau theo trục Z
  */
+// "Nguyễn Hiệp" → dòng trên "Nguyễn", dòng dưới "Hiệp"
+const first = (name) => name.split(' ').slice(0, -1).join(' ');
+const last = (name) => name.split(' ').slice(-1)[0];
+
 export default function Hero({ opened }) {
   const tiltRef = useTilt({ source: 'global', ease: 0.06 });
   const scrollRef = useScrollProgress({ start: 0, end: -0.8 });
@@ -27,7 +31,10 @@ export default function Hero({ opened }) {
       aria-label="Tên cô dâu chú rể"
     >
       <div className="hero__grid">
-        <h1 className="hero__name hero__name--left">{groom.short}</h1>
+        <h1 className="hero__name hero__name--left">
+          <span className="hero__name-first">{first(groom.display)}</span>
+          <span>{last(groom.display)}</span>
+        </h1>
 
         <div className="hero__stack-wrap" ref={tiltRef}>
           <div className="hero__stack">
@@ -39,7 +46,10 @@ export default function Hero({ opened }) {
         </div>
 
         <h1 className="hero__name hero__name--right">
-          <em className="accent">&amp;</em> {bride.short}
+          <span className="hero__name-first">
+            <em className="accent">&amp;</em> {first(bride.display)}
+          </span>
+          <span>{last(bride.display)}</span>
         </h1>
       </div>
 

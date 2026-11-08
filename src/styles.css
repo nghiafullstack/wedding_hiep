@@ -334,7 +334,10 @@ a {
 }
 .cover__names {
   margin: 26px 0 6px;
-  font: 300 clamp(52px, 7vw, 88px) / 1 var(--serif);
+  font: 300 clamp(44px, 6vw, 76px) / 1.04 var(--serif);
+}
+.cover__name {
+  display: block;
 }
 .cover__date {
   margin: 0 0 32px;
@@ -391,7 +394,7 @@ a {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  gap: 40px;
+  gap: clamp(40px, 8vw, 120px);
 }
 .hero__name {
   margin: 0;
@@ -403,7 +406,19 @@ a {
   opacity: 0;
   transition: opacity 1.4s var(--ease-out) 0.5s, transform 1.6s var(--ease-out) 0.5s;
 }
+.hero__name {
+  display: flex;
+  flex-direction: column;
+}
+.hero__name-first {
+  font-size: 0.78em;
+  line-height: 1.1;
+}
+.hero__name-first em {
+  font-style: italic;
+}
 .hero__name--left {
+  align-items: flex-end;
   text-align: right;
   transform: perspective(800px) translate3d(-60px, 0, -200px) rotateY(35deg);
 }
@@ -633,7 +648,7 @@ a {
   transform: translateZ(30px);
 }
 .card3d__front-text strong {
-  font: 300 36px/1 var(--serif);
+  font: 300 32px/1.08 var(--serif);
 }
 .card3d__eyebrow {
   font-size: 11px;
@@ -969,20 +984,39 @@ a {
   letter-spacing: 0.12em;
   color: var(--muted);
 }
+.event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.event__places {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+.event__place-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.event__place-block + .event__place-block {
+  padding-top: 22px;
+  border-top: 1px dashed var(--line);
+}
 .event__place {
   margin: 0;
   font-weight: 500;
 }
 .event__addr {
-  margin: 4px 0 24px;
+  margin: 4px 0 14px;
   font-size: 14px;
   color: var(--muted);
+  max-width: 32ch;
 }
-.event__actions {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
+.event__save {
+  margin-top: auto;
 }
 
 /* ═════════════ ALBUM — vòng 3D ═════════════ */
@@ -1418,7 +1452,9 @@ a {
     justify-items: center;
     gap: 32px;
   }
-  .hero__name--left {
+  .hero__name--left,
+  .hero__name--right {
+    align-items: center;
     text-align: center;
   }
   .hero__meta {

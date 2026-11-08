@@ -34,7 +34,10 @@ export default function Cover({ onOpen }) {
         {wedding.monogram[1]}
       </div>
       <h1 className="cover__names">
-        {wedding.groom.short} <em className="accent">&amp;</em> {wedding.bride.short}
+        <span className="cover__name">{wedding.groom.display}</span>
+        <span className="cover__name">
+          <em className="accent">&amp;</em> {wedding.bride.display}
+        </span>
       </h1>
       <p className="cover__date">{wedding.dateText}</p>
       {interactive ? (

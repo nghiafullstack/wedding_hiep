@@ -4,8 +4,8 @@ import { Reveal, SectionHead } from './Common';
 
 const isPlaceholder = (s) => /^\[.*\]$/.test(s.trim());
 
-function mapsUrl(ev) {
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${ev.place}, ${ev.address}`)}`;
+function mapsUrl(p) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.address)}`;
 }
 
 /** Tạo file .ics để khách bấm "Lưu lịch" là thêm vào Lịch điện thoại */
@@ -13,7 +13,7 @@ function downloadIcs(ev) {
   const start = new Date(ev.start);
   const end = new Date(start.getTime() + 2 * 3600 * 1000);
   const fmt = (d) => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
-  const title = `${ev.title} — ${wedding.groom.short} & ${wedding.bride.short}`;
+  const title = `${ev.title} — ${wedding.groom.display} & ${wedding.bride.display}`;
   const ics = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
@@ -24,7 +24,7 @@ function downloadIcs(ev) {
     `DTSTART:${fmt(start)}`,
     `DTEND:${fmt(end)}`,
     `SUMMARY:${title}`,
-    `LOCATION:${ev.place}, ${ev.address}`,
+    `LOCATION:${ev.places.map((p) => `${p.place}: ${p.address}`).join(' / ')}`,
     'BEGIN:VALARM',
     'TRIGGER:-PT2H',
     'ACTION:DISPLAY',
@@ -50,25 +50,35 @@ function EventCard({ ev, i }) {
         <h3 className="event__title">{ev.title}</h3>
         <p className="event__time">{ev.time}</p>
         <p className="event__date">
-          {wedding.weekday} · {wedding.dateText}
+          {ev.weekday} · {ev.dateText}
         </p>
         <span className="rule" />
-        <p className="event__place">{ev.place}</p>
-        <p className="event__addr">{ev.address}</p>
-        <div className="event__actions">
-          {isPlaceholder(ev.address) ? (
-            <span className="btn btn--outline btn--sm is-disabled" aria-disabled="true">
-              Chỉ đường
-            </span>
-          ) : (
-            <a className="btn btn--outline btn--sm" href={mapsUrl(ev)} target="_blank" rel="noreferrer">
-              Chỉ đường
-            </a>
-          )}
-          <button type="button" className="btn btn--ghost btn--sm" onClick={() => downloadIcs(ev)}>
-            Lưu lịch
-          </button>
+        <div className="event__places">
+          {ev.places.map((p) => (
+            <div className="event__place-block" key={p.place}>
+              <p className="event__place">{p.place}</p>
+              <p className="event__addr">{p.address}</p>
+              {isPlaceholder(p.address) ? (
+                <span className="btn btn--outline btn--sm is-disabled" aria-disabled="true">
+                  Chỉ đường
+                </span>
+              ) : (
+                <a
+                  className="btn btn--outline btn--sm"
+                  href={mapsUrl(p)}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Chỉ đường tới ${p.place.toLowerCase()}`}
+                >
+                  Chỉ đường
+                </a>
+              )}
+            </div>
+          ))}
         </div>
+        <button type="button" className="btn btn--ghost btn--sm event__save" onClick={() => downloadIcs(ev)}>
+          Lưu lịch
+        </button>
       </article>
     </Reveal>
   );

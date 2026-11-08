@@ -10,26 +10,29 @@ export const wedding = {
   // Màu nhấn (thiết kế có 4 tuỳ chọn: #2b3a8c, #5f6f52, #8a5a44, #1c1c1a)
   accent: '#2b3a8c',
 
+  // display: tên hiển thị lớn trên thiệp (bìa, phần đầu, mặt trước thiệp, lời kết)
   groom: {
-    short: 'Hiệp',
+    display: 'Nguyễn Hiệp',
     full: 'Nguyễn Hiệp',
     father: 'Nguyễn Khanh',
     mother: 'Trần Thị Hà',
+    home: 'Tư gia nhà trai',
     address: 'Số 12, xóm Thanh Quang, thôn Cộng Hoà, xã Sóc Sơn, Hà Nội',
     photo: img('groom.jpg'),
   },
   bride: {
-    short: 'Thương',
+    display: 'Hoài Thương',
     full: 'Lê Thị Hoài Thương',
     father: 'Lê Văn Bắc',
     mother: 'Nguyễn Thị Thuỷ',
+    home: 'Tư gia nhà gái',
     address: 'Xóm Núi Bé, xã Nam Phương Tiến, huyện Chương Mỹ, Hà Nội',
     photo: img('bride.jpg'),
   },
   monogram: ['H', 'T'],
 
-  // Mốc giờ dùng cho đồng hồ đếm ngược (giờ Việt Nam, +07:00)
-  dateISO: '2026-11-28T17:30:00+07:00',
+  // Ngày cưới chính (đồng hồ đếm ngược chạy tới Lễ Vu Quy sáng Thứ Bảy)
+  dateISO: '2026-11-28T08:00:00+07:00',
   dateText: '28 · 11 · 2026',
   weekday: 'Thứ Bảy',
   lunarText: '[Tức ngày ... tháng ... năm Bính Ngọ]',
@@ -39,35 +42,42 @@ export const wedding = {
     eyebrow: 'Trân trọng kính mời',
     body:
       'Trân trọng kính mời bạn đến chung vui cùng gia đình chúng mình trong ngày trọng đại. Sự hiện diện của bạn là niềm vinh hạnh lớn nhất.',
-    partyTime: '17:30',
-    venue: '[Tên nhà hàng]',
-    venueAddress: '[Địa chỉ nhà hàng]',
+    partyTime: '16:30',
+    partyDate: 'Thứ Sáu, 27 · 11 · 2026',
+    venue: 'Tại tư gia nhà trai & nhà gái',
   },
 
+  // Mỗi sự kiện có thể tổ chức ở một hoặc nhiều nơi (places)
   events: [
     {
       idx: '01',
-      title: 'Lễ Vu Quy',
-      time: '08:00',
-      start: '2026-11-28T08:00:00+07:00',
-      place: 'Tư gia nhà gái',
-      address: 'Xóm Núi Bé, xã Nam Phương Tiến, huyện Chương Mỹ, Hà Nội',
+      title: 'Tiệc Cưới',
+      time: '16:30',
+      weekday: 'Thứ Sáu',
+      dateText: '27 · 11 · 2026',
+      start: '2026-11-27T16:30:00+07:00',
+      places: [
+        { place: 'Tư gia nhà trai', address: 'Số 12, xóm Thanh Quang, thôn Cộng Hoà, xã Sóc Sơn, Hà Nội' },
+        { place: 'Tư gia nhà gái', address: 'Xóm Núi Bé, xã Nam Phương Tiến, huyện Chương Mỹ, Hà Nội' },
+      ],
     },
     {
       idx: '02',
-      title: 'Lễ Thành Hôn',
-      time: '10:00',
-      start: '2026-11-28T10:00:00+07:00',
-      place: 'Tư gia nhà trai',
-      address: 'Số 12, xóm Thanh Quang, thôn Cộng Hoà, xã Sóc Sơn, Hà Nội',
+      title: 'Lễ Vu Quy',
+      time: '08:00',
+      weekday: 'Thứ Bảy',
+      dateText: '28 · 11 · 2026',
+      start: '2026-11-28T08:00:00+07:00',
+      places: [{ place: 'Tư gia nhà gái', address: 'Xóm Núi Bé, xã Nam Phương Tiến, huyện Chương Mỹ, Hà Nội' }],
     },
     {
       idx: '03',
-      title: 'Tiệc Cưới',
-      time: '17:30',
-      start: '2026-11-28T17:30:00+07:00',
-      place: '[Tên nhà hàng]',
-      address: '[Địa chỉ nhà hàng]',
+      title: 'Lễ Thành Hôn',
+      time: '10:00',
+      weekday: 'Thứ Bảy',
+      dateText: '28 · 11 · 2026',
+      start: '2026-11-28T10:00:00+07:00',
+      places: [{ place: 'Tư gia nhà trai', address: 'Số 12, xóm Thanh Quang, thôn Cộng Hoà, xã Sóc Sơn, Hà Nội' }],
     },
   ],
 
