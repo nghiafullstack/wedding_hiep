@@ -117,7 +117,7 @@ export const wedding = {
 
   // Gửi RSVP về đâu: dán URL Google Apps Script / API của anh vào đây.
   // Để trống thì form vẫn chạy, câu trả lời lưu tạm trên máy khách.
-  rsvpEndpoint: '',
+  rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbzHeeyMagWo831XcGUa6m5NxblTInaAG5zK32rCOMHizCDqoTZdNk7kgXKSoI24T5fV/exec',
 
   // Nhạc nền: phát khi khách bấm "Mở thiệp". Muốn dùng bài khác: chép file .mp3
   // vào public/music/ rồi đổi tên file ở đây. Để chuỗi rỗng '' là tắt nhạc.
