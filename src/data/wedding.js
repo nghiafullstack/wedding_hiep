@@ -35,8 +35,9 @@ export const wedding = {
   dateISO: '2026-11-28T08:00:00+07:00',
   dateText: '28 · 11 · 2026',
   weekday: 'Thứ Bảy',
-  lunarText: '[Tức ngày 20 tháng 10 năm Bính Ngọ]',
-  rsvpDeadline: '[trước ngày ...]',
+  lunarText: 'Tức ngày 20 tháng 10 năm Bính Ngọ',
+  // Để trống thì dòng RSVP chỉ ghi "Vui lòng phản hồi để ..."
+  rsvpDeadline: '',
 
   invite: {
     eyebrow: 'Trân trọng kính mời',
@@ -83,6 +84,9 @@ export const wedding = {
 
   images: {
     cover: img('card-front.jpg'),
+    // Điểm neo khi ảnh dọc bị cắt trên màn hình ngang: '50% 0%' = giữ mép trên, '50% 50%' = giữa.
+    // 15% giữ trọn mặt cô dâu chú rể (đầu nằm ở khoảng 12–35% chiều cao ảnh).
+    coverFocus: '50% 15%',
     heroBack: img('portrait-1.jpg'),
     heroMid: img('bride.jpg'),
     heroFront: img('couple.jpg'),

@@ -57,7 +57,7 @@ export default function Cover({ onOpen }) {
         {['left', 'right'].map((side) => (
           <div key={side} className={`cover__door cover__door--${side}`}>
             <div className="cover__door-face">
-              <img src={wedding.images.cover} alt="" className="cover__bg" />
+              <img src={wedding.images.cover} alt="" className="cover__bg" style={{ objectPosition: wedding.images.coverFocus }} />
               <Content />
             </div>
           </div>

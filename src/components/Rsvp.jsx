@@ -47,7 +47,7 @@ export default function Rsvp() {
     <section className="section" id="rsvp">
       <SectionHead
         eyebrow="Xác nhận tham dự"
-        sub={`Vui lòng phản hồi ${wedding.rsvpDeadline} để ${wedding.groom.display} & ${wedding.bride.display} chuẩn bị chu đáo nhất.`}
+        sub={`Vui lòng phản hồi ${wedding.rsvpDeadline ? wedding.rsvpDeadline + ' ' : ''}để ${wedding.groom.display} & ${wedding.bride.display} chuẩn bị chu đáo nhất.`}
       >
         Bạn sẽ <em className="accent">đến chứ?</em>
       </SectionHead>
